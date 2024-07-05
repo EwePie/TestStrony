@@ -80,9 +80,9 @@ class CartTest(BaseTest):
         self.cart_page.phone()
         # wpisujemy email
         self.cart_page.email_billing()
-        sleep(5)
+        sleep(8)
         # Klikamy przycisk składania zamówienia
         self.cart_page.place_order_btn()
-        sleep(5)
+        sleep(7)
         # Oczekiwany rezultat - zamówienie zostało złożone, dostajemy info "Thank you. Your order has been received."
         self.assertEqual("Thank you. Your order has been received.", self.cart_page.order_msg())

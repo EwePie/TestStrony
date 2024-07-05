@@ -1,7 +1,6 @@
 # tests/login_test.py
 from tests.base_test import BaseTest
 from tests.test_data import TestData
-from time import sleep
 
 
 class LoginTests(BaseTest):
@@ -25,7 +24,6 @@ class LoginTests(BaseTest):
         self.login_page.enter_password(self.test_data.password)
         # 3. Kliknij Log In
         self.login_page.click_log_in()
-        sleep(3)
         # Oczekiwany rezultat: Wyskakuje komunikat "The password you entered for the username abcd is incorrect."
         self.assertEqual("Error: The password you entered for the username abcd is incorrect. Lost your password?",
                          self.login_page.error_wrong_usr())
@@ -33,7 +31,6 @@ class LoginTests(BaseTest):
     def test_no_name_and_password_entered(self):
         """ TC2: User does not enter username and password"""
         self.login_page.click_log_in()
-        sleep(3)
         # Oczekiwany rezultat: Wyskakuje komunikat "Error: Username is required."
         self.assertEqual("Error: Username is required.", self.login_page.error_usr())
 
@@ -45,13 +42,11 @@ class LoginTests(BaseTest):
         self.login_page.enter_password(self.test_data.password_reg)
         # 3. Kliknij Log In
         self.login_page.click_log_in()
-        sleep(3)
         # Oczekiwany rezultat: poprawnie zalogowano
         self.assertEqual("Hello lolwowheh (not lolwowheh? Log out)", self.login_page.hello_msg())
 
     def test_no_name_and_password_entered_to_reg(self):
         """ TC4: User does not enter username and password in registration field"""
         self.login_page.click_reg()
-        sleep(3)
         # Oczekiwany rezultat: Wyskakuje komunikat "Error:  Please provide a valid email address."
         self.assertEqual("Error: Please provide a valid email address.", self.login_page.error_reg())

@@ -32,7 +32,6 @@ class CartTest(BaseTest):
         self.assertEqual(self.cart_page.cart_val(), "Little Black Top")
         self.assertEqual(self.cart_page.cart_val1(), "Amari Shirt")
         self.assertEqual(self.cart_page.cart_val2(), "Magnolia Dress")
-        sleep(3)
 
     def test_delete_item_from_cart(self):
         """ TC6: User deletes item from cart"""
@@ -66,32 +65,24 @@ class CartTest(BaseTest):
         sleep(2)
         # wpisujemy imię
         self.cart_page.billing_name()
-        sleep(1)
         # wpisujemy nazwisko
         self.cart_page.billing_last_name()
-        sleep(1)
         # wybieramy kraj
         self.cart_page.country_btn()
-        sleep(2)
         self.cart_page.select_country()
-        sleep(2)
         # wpisujemy ulicę
         self.cart_page.address_str()
-        sleep(2)
         # wpisujemy kod pocztowy
         self.cart_page.zip_code()
-        sleep(2)
         # wpisujemy miasto
         self.cart_page.town()
-        sleep(2)
         # wpisujemy nr telefonu
         self.cart_page.phone()
-        sleep(2)
         # wpisujemy email
         self.cart_page.email_billing()
-        sleep(10)
+        sleep(5)
         # Klikamy przycisk składania zamówienia
         self.cart_page.place_order_btn()
-        sleep(10)
+        sleep(5)
         # Oczekiwany rezultat - zamówienie zostało złożone, dostajemy info "Thank you. Your order has been received."
         self.assertEqual("Thank you. Your order has been received.", self.cart_page.order_msg())

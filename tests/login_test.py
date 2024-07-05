@@ -30,6 +30,7 @@ class LoginTests(BaseTest):
 
     def test_no_name_and_password_entered(self):
         """ TC2: User does not enter username and password"""
+        # klikamy przycisk logowania
         self.login_page.click_log_in()
         # Oczekiwany rezultat: Wyskakuje komunikat "Error: Username is required."
         self.assertEqual("Error: Username is required.", self.login_page.error_usr())

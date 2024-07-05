@@ -14,11 +14,11 @@ class CartTest(BaseTest):
         super().setUp()
         # 2.Tworzę obiekt (instancję) klasy CartPage
         self.cart_page = CartPage(self.driver)
+        # 3. klikamy stronę zakupową
+        self.home_page.click_shop_page()
 
     def test_add_item_to_cart(self):
         """ TC5: User adds items to cart"""
-        # klikamy stronę zakupową
-        self.home_page.click_shop_page()
         # dodajemy rzeczy do koszyka
         self.home_page.item_1()
         sleep(3)
@@ -35,7 +35,6 @@ class CartTest(BaseTest):
 
     def test_delete_item_from_cart(self):
         """ TC6: User deletes item from cart"""
-        self.home_page.click_shop_page()
         # dodajemy rzeczy do koszyka
         self.home_page.item_1()
         sleep(3)
@@ -53,7 +52,6 @@ class CartTest(BaseTest):
 
     def test_make_order(self):
         """ TC7: User adds item to cart and place an order"""
-        self.home_page.click_shop_page()
         # dodajemy rzeczy do koszyka
         self.home_page.item_1()
         sleep(5)

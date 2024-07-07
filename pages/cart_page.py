@@ -5,7 +5,7 @@ from selenium.webdriver.support.select import Select
 
 
 class Locators:
-    """Lokatory na stronie koszyka"""
+    """Locators on cart page"""
     SHOP_PAGE = (By.XPATH, '//*[@id="menu-item-142"]/a')
     DELETE_ITEM = (By.XPATH, '//*[@id="post-6"]/div[2]/form/table/tbody/tr[1]/td[5]/div/div/a[1]/span')
     UPDATE_CART = (By.XPATH, '//input[@class="button" and @name="update_cart"]')

@@ -5,19 +5,19 @@ import unittest
 
 
 class BaseTest(unittest.TestCase):
-    """Klasa bazowa każdego testu"""
+    """Base class for every test"""
 
     def setUp(self):
-        """Warunki wstępne każdego testu"""
+        """Set up for evey test"""
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(5)
         self.driver.maximize_window()
         self.driver.get("https://skleptest.pl/")
-        # Jesteśmy na stronie głównej - tworzę instancję klasy HomePage
-        # Muszę zaimportować niezbędną klasę
-        # Tworzę obiekt (instancję) klasy HomePage
+        # We are at main page - create instance class HomePage
+        # Need to import needed class
+        # Create object (instance) class HomePage
         self.home_page = HomePage(self.driver)
 
-    # sprzątanie po testach
+    # cleaning up after tests
     def tearDown(self):
         self.driver.quit()

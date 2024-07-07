@@ -5,82 +5,81 @@ from pages.cart_page import CartPage
 
 
 class CartTest(BaseTest):
-    """Testy koszyka"""
+    """Cart tests"""
 
     def setUp(self):
-        # Rozszerzam bazowy setup testu
-        # o wygenerowanie danych testowych
-        # 1. Najpierw wywołuję bazowy setup
+        # Expand base setup for test
+        # 1. First i invoke base setup
         super().setUp()
-        # 2.Tworzę obiekt (instancję) klasy CartPage
+        # 2.Create object (instance) class CartPage
         self.cart_page = CartPage(self.driver)
-        # 3. klikamy stronę zakupową
+        # 3. Click shop site
         self.home_page.click_shop_page()
 
     def test_add_item_to_cart(self):
         """ TC5: User adds items to cart"""
-        # dodajemy rzeczy do koszyka
+        # Add items to cart
         self.home_page.item_1()
         sleep(3)
         self.home_page.item_2()
         sleep(3)
         self.home_page.item_3()
         sleep(3)
-        # przechodzimy do koszyka
+        # Go to cart
         self.home_page.click_cart()
-        # Oczekiwany rezultat-3 rzeczy w koszyku:"Little Black Top","Amari Shirt,"Magnolia Dress"
+        # Expected result -3 things in cart:"Little Black Top","Amari Shirt,"Magnolia Dress"
         self.assertEqual(self.cart_page.cart_val(), "Little Black Top")
         self.assertEqual(self.cart_page.cart_val1(), "Amari Shirt")
         self.assertEqual(self.cart_page.cart_val2(), "Magnolia Dress")
 
     def test_delete_item_from_cart(self):
         """ TC6: User deletes item from cart"""
-        # dodajemy rzeczy do koszyka
+        # Add item to cart
         self.home_page.item_1()
         sleep(3)
-        # przechodzimy do koszyka
+        # Go to cart
         self.home_page.click_cart()
         sleep(3)
-        # usuwamy przedmiot
+        # delete item from cart
         self.cart_page.delete_item()
         sleep(3)
-        # aktualizujemy koszyk
+        # update cart
         self.cart_page.update_cart()
         sleep(3)
-        # Oczekiwany rezultat: wiadomość o pustym koszyku - "Your cart is currently empty."
+        # Expected result: empty cart message - "Your cart is currently empty."
         self.assertEqual("Your cart is currently empty.", self.cart_page.empty_cart_msg())
 
     def test_make_order(self):
         """ TC7: User adds item to cart and place an order"""
-        # dodajemy rzeczy do koszyka
+        # Add item to cart
         self.home_page.item_1()
         sleep(5)
-        # przechodzimy do koszyka
+        # Go to cart
         self.home_page.click_cart()
         sleep(2)
-        # przechodzimy do składania zamówienia
+        # go to checkout
         self.cart_page.check_out_btn()
         sleep(2)
-        # wpisujemy imię
+        # type name
         self.cart_page.billing_name()
-        # wpisujemy nazwisko
+        # type last name
         self.cart_page.billing_last_name()
-        # wybieramy kraj
+        # pick country
         self.cart_page.country_btn()
         self.cart_page.select_country()
-        # wpisujemy ulicę
+        # type street name
         self.cart_page.address_str()
-        # wpisujemy kod pocztowy
+        # type zip code
         self.cart_page.zip_code()
-        # wpisujemy miasto
+        # type city
         self.cart_page.town()
-        # wpisujemy nr telefonu
+        # type phone number
         self.cart_page.phone()
-        # wpisujemy email
+        # type email
         self.cart_page.email_billing()
         sleep(8)
-        # Klikamy przycisk składania zamówienia
+        # click place order button
         self.cart_page.place_order_btn()
         sleep(7)
-        # Oczekiwany rezultat - zamówienie zostało złożone, dostajemy info "Thank you. Your order has been received."
+        # Expected result - order has been made, we get info "Thank you. Your order has been received."
         self.assertEqual("Thank you. Your order has been received.", self.cart_page.order_msg())

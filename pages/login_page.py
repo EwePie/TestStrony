@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 
 class Locators:
-    """Lokatory strony logowania"""
+    """Lokators on login page"""
     USERNAME_INPUT = (By.ID, "username")
     PASSWORD_INPUT = (By.ID, "password")
     LOG_IN_BTN = (By.XPATH, '//*[@id="customer_login"]/div[1]/form/p[3]/input[3]')

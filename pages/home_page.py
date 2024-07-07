@@ -6,7 +6,7 @@ from pages.cart_page import CartPage
 
 
 class Locators:
-    """Lokatory na stronie głównej"""
+    """Locators on main site"""
     LOGIN_LINK = (By.XPATH, '//*[@id="page"]/header[1]/div/div/div/ul/li[3]/a')
     ITEM_1 = (By.XPATH, '//*[@id="tyche_products-1"]/div/div[2]/div/div[1]/div/div[2]/div/div/div[2]/a')
     ITEM_2 = (By.XPATH, '//*[@id="tyche_products-2"]/div/div[3]/div/div[1]/div/div[1]/div/div/div[2]/a')
@@ -16,7 +16,7 @@ class Locators:
 
 
 class HomePage(BasePage):
-    """Strona główna"""
+    """Home Page"""
 
     def click_log_in(self):
         """Clicks Log in and returns LoginPage"""
